@@ -1,4 +1,4 @@
-name: CI-CD Actions
+name: Test
 
 on:
   pull_request:
@@ -6,13 +6,13 @@ on:
       - main
 
 jobs:
-  build-and-push:
-    uses: ./.github/workflows/build_and_push.yml
+  Train:
+    uses: ./.github/workflows/Train.yml
     secrets: inherit
   
-  pull-and-test:
-    name: pull_and_test
-    needs: [build-and-push]
+  Test:
+    name: Test
+    needs: [Train]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
