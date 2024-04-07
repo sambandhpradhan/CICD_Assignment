@@ -1,4 +1,4 @@
-import pandas as pd
+import panda as pd
 from sklearn.linear_model import LogisticRegression
 import pickle
 import numpy as np
