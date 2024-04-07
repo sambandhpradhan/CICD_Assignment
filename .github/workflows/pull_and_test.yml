@@ -1,24 +1,20 @@
 name: Run and Test Docker Image
 
 on:
-  workflow_run:
-    workflows: ["Build and Push Docker Image"]
-    types:
-      - completed
+  pull_request:
+    branches: 
+      - main
 
 jobs:
-  run-and-test:
+  build-and-push:
+    uses: ./.github/workflows/build_and_push.yml
+    secrets: inherit
+  
+  pull-and-test:
+    name: pull_and_test
+    needs: [build-and-push]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Log into Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Pull Docker image from registry
         run: docker pull sambandh/cicd_assignment:v1
 
