@@ -10,6 +10,7 @@ y = df['Disease'].to_numpy()
 labels = np.sort(np.unique(y))
 y = np.array([np.where(labels == x) for x in y]).flatten()
 
+# With better_score = 1, the model will score more than 0.50
 better_score = 1
 if better_score == 1:
     scaler = StandardScaler()
