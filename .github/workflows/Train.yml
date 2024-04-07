@@ -1,9 +1,9 @@
-name: Build and Push Docker Image
+name: Train
 
 on: [workflow_call]
 
 jobs:
-  build-and-push:
+  Train:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
