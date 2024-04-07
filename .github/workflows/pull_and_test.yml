@@ -1,4 +1,4 @@
-name: Run and Test Docker Image
+name: CI-CD Actions
 
 on:
   pull_request:
